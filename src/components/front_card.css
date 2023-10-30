@@ -1,0 +1,42 @@
+.front_card {
+  position: relative;
+  top: 09rem;
+  left: 20rem;
+
+  .front_card-img {
+    position: absolute;
+  }
+  .circle_img {
+    position: absolute;
+    margin: 2rem;
+    z-index: 1;
+  }
+
+  .front_card-number {
+    position: absolute;
+    z-index: 1;
+    font-size: 2.3rem;
+    color: aliceblue;
+    top: 5rem;
+    left: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .front_card-name {
+    position: absolute;
+    z-index: 1;
+    font-size: 1.3rem;
+    color: aliceblue;
+    top: 11rem;
+    left: 2rem;
+  }
+
+  .front_card-cvc {
+    position: absolute;
+    z-index: 1;
+    font-size: 1.3rem;
+    color: aliceblue;
+    top: 11rem;
+    left: 22rem;
+  }
+}
