@@ -1,8 +1,8 @@
 import { useState } from "react";
 import CardBack from "../components/CardBack";
-import Cards from "../components/Cards";
+import Cards from "../components/Cards copy";
 import Container from "../components/Container";
-import Inputs from "../components/Inputs";
+import Inputs from "../components/Inputs copy";
 import "./home.css";
 
 const Home = (props) => {
