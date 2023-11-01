@@ -32,8 +32,13 @@ const Inputs = (props) => {
         type="text"
         placeholder="Jane Appleseed"
         name="name"
-        onChange={props.onChangeName}
-        value={props.valueName}
+        onChange={(e)=> {
+          let name = e.target.value
+         
+          setForm({...form, name: name})
+
+           props.name(form.name)
+        }}
         
         required
       />

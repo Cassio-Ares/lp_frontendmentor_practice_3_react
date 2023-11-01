@@ -1,0 +1,21 @@
+.card_back{
+    display: block;
+    position: relative;
+    top: 25rem;
+    left: 28rem;
+
+   .card_back-img{
+    position: absolute;
+   }
+
+    .card_back-number{
+        position: absolute;
+        z-index: 1;
+        color: aliceblue;
+        top: 5.7rem;
+        left: 22rem;
+        letter-spacing: .3rem;
+        font-size: 1.2rem;
+        
+    }
+}

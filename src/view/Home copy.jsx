@@ -13,19 +13,15 @@ const Home = (props) => {
   const [valueCvc, setValueCvc] = useState();
 
   //console.log(valueName);
-   
-  const handleChangeName = (event)=>{
-     setValueName(event.target.value) 
-  }
-
-
+  
   return (
     <Container>
       <Inputs
-      onChangeName = {handleChangeName}
-
-      valeuName = {valueName}
-      
+        name={(inputValue) => setValueName(inputValue)}
+        number={(inputValue) => setValueNumber(inputValue)}
+        month={(inputValue) => setValueMM(inputValue)}
+        year={(inputValue) => setValueYY(inputValue)}
+        cvc={(inputValue) => setValueCvc(inputValue)}
       />
       <Cards dataName={valueName} dataNumber={valueNumber} dataMM={valueMM} dataYY={valueYY} />
       <CardBack dataCvc={valueCvc} />

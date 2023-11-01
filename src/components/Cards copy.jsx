@@ -4,7 +4,10 @@ import circle_1 from "../images/card-logo.svg";
 import { useEffect, useState } from "react";
 
 const Cards = ({ dataName, dataNumber, dataMM, dataYY }) => {
-  
+  const [number, setNumber] = useState("0000 0000 0000 0000");
+  const [name, setName] = useState( );
+  const [MM, setMM] = useState("00");
+  const [YY, setYY] = useState("00");
 
   const nameRegExp = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
   const numberRegExp = /^[0-9]*$/;
@@ -15,10 +18,15 @@ const Cards = ({ dataName, dataNumber, dataMM, dataYY }) => {
   const isValidMM = MMRegExp.test(dataMM);
   const isValidYY = numberRegExp.test(dataYY);
 
-
+  const nameValue = dataName;
 
  
 
+   useEffect(() => {
+ 
+   setName(dataName);
+  
+   }, [dataName])
   
 
 
@@ -28,15 +36,15 @@ const Cards = ({ dataName, dataNumber, dataMM, dataYY }) => {
     <section className="front_card">
       <img className="front_card-img" src={front_card} alt="card front" />
       <img className="circle_img" src={circle_1} alt="oiii" />
-      <p className="front_card-number">{dataNumber}</p>
+      <p className="front_card-number">{number}</p>
 
 
-      <p className="front_card-name">{dataName || "Cassio"}</p>
+      <p className="front_card-name">{name == "" ? "Cassio" : "oiiiiii"}</p>
 
 
 
       <p className="front_card-cvc">
-        {dataMM}/{dataYY}
+        {MM}/{YY}
       </p>
     </section>
   );
