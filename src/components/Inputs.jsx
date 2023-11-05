@@ -7,6 +7,10 @@ const Inputs = (props) => {
    * faça o tratamento.
    */
 
+    // const nameRegExp = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+  // const numberRegExp = /^[0-9]*$/;
+  // const MMRegExp = /^0[1-9]|1[0-2]*$/;
+
   return (
     <form className="form">
       <label className="form_label" htmlFor="name">
@@ -19,6 +23,7 @@ const Inputs = (props) => {
         name="name"
         onChange={props.onChangeName}
         value={props.input_value_Name}
+        pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
         required
       />
 
@@ -34,6 +39,7 @@ const Inputs = (props) => {
         maxLength="16"
         onChange={props.onChangeNumber}
         value={props.valueNumber}
+        pattern="[0-9]+$" 
         required
       />
 
@@ -52,6 +58,7 @@ const Inputs = (props) => {
               maxLength="2"
               onChange={props.onChangeMonth}
               value={props.valueMM}
+              pattern= "0[1-9]|1[0-2]+$"
               required
             />
             <input
@@ -63,6 +70,7 @@ const Inputs = (props) => {
               maxLength="2"
               onChange={props.onChangeYear}
               value={props.valueYY}
+              pattern="[0-9]+$" 
               required
             />
           </div>
@@ -81,6 +89,7 @@ const Inputs = (props) => {
             maxLength="3"
             onChange={props.onChangeCvc}
             value={props.valueCvc}
+            pattern="[0-9]+$"
             required
           />
         </div>

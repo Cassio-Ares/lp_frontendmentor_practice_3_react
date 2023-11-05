@@ -50,7 +50,7 @@ const Home = (props) => {
       valeuYY = {valueYY}
 
       onChangeCvc = {handleChangeCvc}
-      valCvc = {valueCvc}
+      valeuCvc = {valueCvc}
      
       
       />
