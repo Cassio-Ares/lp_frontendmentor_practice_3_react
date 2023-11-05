@@ -39,4 +39,18 @@
     top: 11rem;
     left: 22rem;
   }
+
+  .error_name {
+    position: absolute;
+    left: 46rem;
+    top: 7rem;
+    color: #ff0000;
+  }
+
+  .error_number{
+    position: absolute;
+    left: 43rem;
+    top: 13rem;
+    color: #ff0000;
+  }
 }

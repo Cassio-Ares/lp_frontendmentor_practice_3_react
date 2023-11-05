@@ -1,26 +1,11 @@
-import { useState } from "react";
 import Btn from "./Btn";
 import "./inputs.css";
 
 const Inputs = (props) => {
- const [form, setForm] = useState({
-    name: "",
-    number: "",
- })
-
-
-
-  function handleChange(event) {
-    event.preventDefault();
-
-    const changeValue = event.target.value;
-
-    
-    props.number(changeValue);
-    props.month(changeValue);
-    props.year(changeValue);
-    props.cvc(changeValue);
-  }
+  /**
+   * props envia os dados para que o elemento pai 
+   * faça o tratamento.
+   */
 
   return (
     <form className="form">
@@ -33,8 +18,7 @@ const Inputs = (props) => {
         placeholder="Jane Appleseed"
         name="name"
         onChange={props.onChangeName}
-        value={props.valueName}
-        
+        value={props.input_value_Name}
         required
       />
 
@@ -48,7 +32,8 @@ const Inputs = (props) => {
         name="cardNumber"
         minLength="16"
         maxLength="16"
-        onChange={handleChange}
+        onChange={props.onChangeNumber}
+        value={props.valueNumber}
         required
       />
 
@@ -65,7 +50,8 @@ const Inputs = (props) => {
               name="MM/YY"
               minLength="2"
               maxLength="2"
-              onChange={handleChange}
+              onChange={props.onChangeMonth}
+              value={props.valueMM}
               required
             />
             <input
@@ -75,7 +61,8 @@ const Inputs = (props) => {
               name="MM/YY"
               minLength="1"
               maxLength="2"
-              onChange={handleChange}
+              onChange={props.onChangeYear}
+              value={props.valueYY}
               required
             />
           </div>
@@ -92,7 +79,8 @@ const Inputs = (props) => {
             name="CVC"
             minLength="3"
             maxLength="3"
-            onChange={handleChange}
+            onChange={props.onChangeCvc}
+            value={props.valueCvc}
             required
           />
         </div>

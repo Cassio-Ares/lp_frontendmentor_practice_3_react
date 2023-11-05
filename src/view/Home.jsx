@@ -17,14 +17,41 @@ const Home = (props) => {
   const handleChangeName = (event)=>{
      setValueName(event.target.value) 
   }
+  
+  const handleChangeNumber = (event) =>{
+    setValueNumber(event.target.value.replace(/(\d{4})/g, "$1 "))
+  }
 
+  const handleChangeMonth = (event) => {
+    setValueMM(event.target.value)
+  }
+
+  const handleChangeYear = (event) => {
+    setValueYY(event.target.value)
+  }
+
+  const handleChangeCvc = (event) => {
+    setValueCvc(event.target.value)
+  }
 
   return (
     <Container>
       <Inputs
       onChangeName = {handleChangeName}
-
       valeuName = {valueName}
+
+      onChangeNumber= {handleChangeNumber}
+      valeuNumber={valueNumber}
+
+      onChangeMonth= {handleChangeMonth}
+      valeuMM={valueMM}
+
+      onChangeYear ={handleChangeYear}
+      valeuYY = {valueYY}
+
+      onChangeCvc = {handleChangeCvc}
+      valCvc = {valueCvc}
+     
       
       />
       <Cards dataName={valueName} dataNumber={valueNumber} dataMM={valueMM} dataYY={valueYY} />
