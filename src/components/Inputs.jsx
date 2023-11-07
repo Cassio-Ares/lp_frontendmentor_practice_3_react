@@ -1,18 +1,33 @@
+import { useForm } from "react-hook-form";
 import Btn from "./Btn";
 import "./inputs.css";
 
-const Inputs = (props) => {
+const Inputs = ({ name, number, month, year, Cvc }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   /**
-   * props envia os dados para que o elemento pai 
+   * props envia os dados para que o elemento pai
    * faça o tratamento.
    */
 
-    // const nameRegExp = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+  // const nameRegExp = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
   // const numberRegExp = /^[0-9]*$/;
   // const MMRegExp = /^0[1-9]|1[0-2]*$/;
 
+  const onSubmit = (data) => {
+    name(data.inputName);
+    number(data.inputNumber);
+    month(data.inputMM);
+    year(data.inputYY);
+    Cvc(data.inputCvc);
+  };
+
   return (
-    <form className="form">
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
       <label className="form_label" htmlFor="name">
         CARDHOLDER NAME
       </label>
@@ -20,12 +35,15 @@ const Inputs = (props) => {
         className="form_input"
         type="text"
         placeholder="Jane Appleseed"
-        name="name"
-        onChange={props.onChangeName}
-        value={props.input_value_Name}
-        pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
-        required
+        {...register("inputName", {
+          required: "This field is required",
+          pattern: {
+            value: /^[A-Za-z]+$/i,
+            message: "Please check the data",
+          },
+        })}
       />
+      <span>{errors.inputName?.message}</span>
 
       <label className="form_label" htmlFor="cardNumber">
         CARD NUMBER
@@ -34,14 +52,20 @@ const Inputs = (props) => {
         className="form_input"
         type="tel"
         placeholder="1234 5678 9123 0000"
-        name="cardNumber"
-        minLength="16"
         maxLength="16"
-        onChange={props.onChangeNumber}
-        value={props.valueNumber}
-        pattern="[0-9]+$" 
-        required
+        {...register("inputNumber", {
+          required: "This field is required",
+          minLength: {
+            value: 16,
+            message: "Please check the data",
+          },
+          pattern: {
+            value: /^[0-9]*$/,
+            message: "Just enter numbers",
+          },
+        })}
       />
+      <span>{errors.inputNumber.message}</span>
 
       <div className="form_section">
         <div className="form_section-date">
@@ -53,25 +77,27 @@ const Inputs = (props) => {
               className="form_section-input"
               type="tel"
               placeholder="MM"
-              name="MM/YY"
+              name="MM"
               minLength="2"
               maxLength="2"
-              onChange={props.onChangeMonth}
-              value={props.valueMM}
-              pattern= "0[1-9]|1[0-2]+$"
+              //onChange={props.onChangeMonth}
+              //  value={props.valueMM}
+              pattern="0[1-9]|1[0-2]+$"
               required
+              {...register("inputMM")}
             />
             <input
               className="form_section-input"
               type="tel"
               placeholder="YY"
-              name="MM/YY"
+              name="YY"
               minLength="1"
               maxLength="2"
-              onChange={props.onChangeYear}
-              value={props.valueYY}
-              pattern="[0-9]+$" 
+              // onChange={props.onChangeYear}
+              // value={props.valueYY}
+              pattern="[0-9]+$"
               required
+              {...register("inputYY")}
             />
           </div>
         </div>
@@ -87,10 +113,11 @@ const Inputs = (props) => {
             name="CVC"
             minLength="3"
             maxLength="3"
-            onChange={props.onChangeCvc}
-            value={props.valueCvc}
+            //onChange={props.onChangeCvc}
+            // value={props.valueCvc}
             pattern="[0-9]+$"
             required
+            {...register("inputCVC")}
           />
         </div>
       </div>

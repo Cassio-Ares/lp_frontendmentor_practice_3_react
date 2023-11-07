@@ -5,56 +5,41 @@ import Container from "../components/Container";
 import Inputs from "../components/Inputs";
 import "./home.css";
 
-const Home = (props) => {
+const Home = ({ data }) => {
   const [valueName, setValueName] = useState();
   const [valueNumber, setValueNumber] = useState();
   const [valueMM, setValueMM] = useState();
   const [valueYY, setValueYY] = useState();
   const [valueCvc, setValueCvc] = useState();
 
-  //console.log(valueName);
-   
-  const handleChangeName = (event)=>{
-     setValueName(event.target.value) 
-  }
-  
-  const handleChangeNumber = (event) =>{
-    setValueNumber(event.target.value.replace(/(\d{4})/g, "$1 "))
-  }
+  //console.log(valueName);.replace(/(\d{4})/g, "$1 "))
 
-  const handleChangeMonth = (event) => {
-    setValueMM(event.target.value)
-  }
+  const name = (data) => {
+    setValueName(data);
+  };
 
-  const handleChangeYear = (event) => {
-    setValueYY(event.target.value)
-  }
+  const number = (data) => {
+    setValueNumber(data);
+  };
 
-  const handleChangeCvc = (event) => {
-    setValueCvc(event.target.value)
-  }
+  const month = (data) => {
+    setValueMM(data);
+  };
+
+  const year = (data) => {
+    setValueYY(data);
+  };
+
+  const Cvc = (data) => {
+    setValueCvc(data);
+  };
+
+  //console.log(valueName)
 
   return (
     <Container>
-      <Inputs
-      onChangeName = {handleChangeName}
-      valeuName = {valueName}
-
-      onChangeNumber= {handleChangeNumber}
-      valeuNumber={valueNumber}
-
-      onChangeMonth= {handleChangeMonth}
-      valeuMM={valueMM}
-
-      onChangeYear ={handleChangeYear}
-      valeuYY = {valueYY}
-
-      onChangeCvc = {handleChangeCvc}
-      valeuCvc = {valueCvc}
-     
-      
-      />
-      <Cards dataName={valueName} dataNumber={valueNumber} dataMM={valueMM} dataYY={valueYY} />
+      <Inputs name={name} number={number} month={month} year={year} Cvc={Cvc} />
+      <Cards data={valueName} dataNumber={valueNumber} dataMM={valueMM} dataYY={valueYY} />
       <CardBack dataCvc={valueCvc} />
     </Container>
   );

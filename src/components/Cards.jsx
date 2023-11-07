@@ -2,7 +2,7 @@ import "./front_card.css";
 import front_card from "../images/bg-card-front.png";
 import circle_1 from "../images/card-logo.svg";
 
-const Cards = ({ dataName, dataNumber, dataMM, dataYY }) => {
+const Cards = ({ data, dataNumber, dataMM, dataYY }) => {
 
 
   // const nameRegExp = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
@@ -14,7 +14,7 @@ const Cards = ({ dataName, dataNumber, dataMM, dataYY }) => {
   // const isValidMM = MMRegExp.test(dataMM);
   // const isValidYY = numberRegExp.test(dataYY);
 
-
+console.log(dataNumber)
   // //const number = dataNumber.replace(/(\d{4})/g, "$1 ")
  
   return (
@@ -23,7 +23,7 @@ const Cards = ({ dataName, dataNumber, dataMM, dataYY }) => {
       <img className="circle_img" src={circle_1} alt="oiii" />
       <p className="front_card-number">{dataNumber || "0000 0000 0000 0000"}</p>
 
-      <p className="front_card-name">{dataName || "Jane Appleseed"}</p>
+      <p className="front_card-name">{data || "Jane Appleseed"}</p>
   
       <p className="front_card-cvc">
         {dataMM || "00"}/{dataYY || "00"}
