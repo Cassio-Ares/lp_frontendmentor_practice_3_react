@@ -23,12 +23,9 @@
   .form_section {
     display: flex;
 
-    .form_section-date {
-      display: flex;
-      flex-direction: column;
-    }
+  
 
-    .form_section-input {
+    .form_section-input{
       width: 7.5rem;
       height: 3rem;
       border-radius: 0.8rem;
@@ -36,14 +33,32 @@
       padding-left: 0.5rem;
     }
 
+    .form_section-date{
+       display: flex;
+       flex-direction: row;
+      
+    }
+
+    .form_section-date_label{
+      margin-top: 0.5rem;
+    }
+
+    .mmyy{
+      display:flex;
+      flex-direction: column;
+    }
+
+
     .form_section-cvc {
       display: flex;
       flex-direction: column;
     }
 
-    .form_section-cvc {
+  
+
+    .form_section-cvc_input{
       width: 9rem;
-      height: 5.8rem;
+      height: 3rem;
       border-radius: 0.8rem;
       margin-left: 0.5rem;
       font-size: 1.3rem;
@@ -62,5 +77,11 @@
 
   .form_btn:hover {
     background: #8c45b4;
+  }
+
+  span{
+    color:#ff0000;
+    font-size: 0.8rem;
+   
   }
 }

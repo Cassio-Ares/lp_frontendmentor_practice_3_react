@@ -1,8 +1,8 @@
 .card_back{
     display: block;
     position: relative;
-    top: 25rem;
-    left: 28rem;
+    top: 20rem;
+    left: 18rem;
 
    .card_back-img{
     position: absolute;

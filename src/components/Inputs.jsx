@@ -14,18 +14,14 @@ const Inputs = ({ name, number, month, year, Cvc }) => {
    * faça o tratamento.
    */
 
- 
-
   const onSubmit = (data) => {
     name(data.inputName);
     number(data.inputNumber.replace(/(\d{4})/g, "$1 "));
     month(data.inputMM);
     year(data.inputYY);
     Cvc(data.inputCvc);
-    console.log(data.inputCvc)
+    console.log(data.inputCvc);
   };
-
-
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -69,58 +65,60 @@ const Inputs = ({ name, number, month, year, Cvc }) => {
       <span>{errors.inputNumber?.message}</span>
 
       <div className="form_section">
-        <div className="form_section-date">
+        <div className="form_section-date_label" >
           <label className="form_label" htmlFor="MM/YY">
             EXP. DATE(MM/YY)
           </label>
-          <div>
-            <input
-              className="form_section-input"
-              type="tel"
-              placeholder="MM"
-              name="MM"
-              {...register("inputMM", {
-                required: "This field is required.",
-                minLength: {
-                  value: "2",
-                  message: "Please check the data",
-                },
-                maxLength: {
-                  value: "2",
-                  message: "Please check the data",
-                },
-                pattern: {
-                  value: /0[1-9]|1[0-2]+$/,
-                  message: "Please check the data",
-                },
-              })}
-            />
+          <div className="form_section-date">
+            <div className="mmyy">
+              <input
+                className="form_section-input"
+                type="tel"
+                placeholder="MM"
+                name="MM"
+                {...register("inputMM", {
+                  required: "This field is required.",
+                  minLength: {
+                    value: "2",
+                    message: "Please check the data",
+                  },
+                  maxLength: {
+                    value: "2",
+                    message: "Please check the data",
+                  },
+                  pattern: {
+                    value: /0[1-9]|1[0-2]+$/,
+                    message: "Please check the data",
+                  },
+                })}
+              />
+              <span>{errors.inputMM?.message}</span>{" "}
+            </div>
 
-            <span>{errors.inputMM?.message}</span> 
-
-            <input
-              className="form_section-input"
-              type="tel"
-              placeholder="YY"
-              name="YY"
-              {...register("inputYY",{
-                required: "This field is required.",
-                minLength: {
-                  value: "2",
-                  message: "Please check the data",
-                },
-                maxLength: {
-                  value: "2",
-                  message: "Please check the data",
-                },
-                pattern:{
-                  value: /[0-9]+$/,
-                  message: "Please check the data"
-                }
-              })}
-            />
-           <span>{errors.inputYY?.message}</span>
-
+            <div className="mmyy">
+              <input
+                className="form_section-input"
+                type="tel"
+                placeholder="YY"
+                name="YY"
+                {...register("inputYY", {
+                  required: "This field is required.",
+                  minLength: {
+                    value: "2",
+                    message: "Please check the data",
+                  },
+                  maxLength: {
+                    value: "2",
+                    message: "Please check the data",
+                  },
+                  pattern: {
+                    value: /[0-9]+$/,
+                    message: "Please check the data",
+                  },
+                })}
+              />
+              <span>{errors.inputYY?.message}</span>
+            </div>
           </div>
         </div>
 
@@ -129,28 +127,27 @@ const Inputs = ({ name, number, month, year, Cvc }) => {
             CVC
           </label>
           <input
-            className="form_section-cvc"
+            className="form_section-cvc_input"
             type="tel"
             placeholder="123"
             name="CVC"
-            {...register("inputCvc",{
+            {...register("inputCvc", {
               required: "Please check the data",
-              minLength:{
+              minLength: {
                 value: 3,
                 message: "Please check the data",
               },
-              maxLength:{
+              maxLength: {
                 value: 3,
                 message: "Please check the data",
               },
-              pattern:{
-                value:/[0-9]+$/,
+              pattern: {
+                value: /[0-9]+$/,
                 message: "Please check the data",
-              }
+              },
             })}
           />
           <span>{errors.inputCvc?.message}</span>
-          
         </div>
       </div>
       <Btn style_btn="form_btn" text="CONFIRM" />
