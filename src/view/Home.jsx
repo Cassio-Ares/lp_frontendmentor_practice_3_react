@@ -12,7 +12,6 @@ const Home = ({ data }) => {
   const [valueYY, setValueYY] = useState();
   const [valueCvc, setValueCvc] = useState();
 
-  //console.log(valueName);.replace(/(\d{4})/g, "$1 "))
 
   const name = (data) => {
     setValueName(data);
@@ -34,7 +33,8 @@ const Home = ({ data }) => {
     setValueCvc(data);
   };
 
-  //console.log(valueName)
+  
+ 
 
   return (
     <Container>

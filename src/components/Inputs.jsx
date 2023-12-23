@@ -14,17 +14,18 @@ const Inputs = ({ name, number, month, year, Cvc }) => {
    * faça o tratamento.
    */
 
-  // const nameRegExp = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
-  // const numberRegExp = /^[0-9]*$/;
-  // const MMRegExp = /^0[1-9]|1[0-2]*$/;
+ 
 
   const onSubmit = (data) => {
     name(data.inputName);
-    number(data.inputNumber);
+    number(data.inputNumber.replace(/(\d{4})/g, "$1 "));
     month(data.inputMM);
     year(data.inputYY);
     Cvc(data.inputCvc);
+    console.log(data.inputCvc)
   };
+
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -38,7 +39,7 @@ const Inputs = ({ name, number, month, year, Cvc }) => {
         {...register("inputName", {
           required: "This field is required",
           pattern: {
-            value: /^[A-Za-z]+$/i,
+            value: /^[a-zA-Z][a-zA-Z\s]*$/,
             message: "Please check the data",
           },
         })}
@@ -65,7 +66,7 @@ const Inputs = ({ name, number, month, year, Cvc }) => {
           },
         })}
       />
-      <span>{errors.inputNumber.message}</span>
+      <span>{errors.inputNumber?.message}</span>
 
       <div className="form_section">
         <div className="form_section-date">
@@ -78,27 +79,48 @@ const Inputs = ({ name, number, month, year, Cvc }) => {
               type="tel"
               placeholder="MM"
               name="MM"
-              minLength="2"
-              maxLength="2"
-              //onChange={props.onChangeMonth}
-              //  value={props.valueMM}
-              pattern="0[1-9]|1[0-2]+$"
-              required
-              {...register("inputMM")}
+              {...register("inputMM", {
+                required: "This field is required.",
+                minLength: {
+                  value: "2",
+                  message: "Please check the data",
+                },
+                maxLength: {
+                  value: "2",
+                  message: "Please check the data",
+                },
+                pattern: {
+                  value: /0[1-9]|1[0-2]+$/,
+                  message: "Please check the data",
+                },
+              })}
             />
+
+            <span>{errors.inputMM?.message}</span> 
+
             <input
               className="form_section-input"
               type="tel"
               placeholder="YY"
               name="YY"
-              minLength="1"
-              maxLength="2"
-              // onChange={props.onChangeYear}
-              // value={props.valueYY}
-              pattern="[0-9]+$"
-              required
-              {...register("inputYY")}
+              {...register("inputYY",{
+                required: "This field is required.",
+                minLength: {
+                  value: "2",
+                  message: "Please check the data",
+                },
+                maxLength: {
+                  value: "2",
+                  message: "Please check the data",
+                },
+                pattern:{
+                  value: /[0-9]+$/,
+                  message: "Please check the data"
+                }
+              })}
             />
+           <span>{errors.inputYY?.message}</span>
+
           </div>
         </div>
 
@@ -111,14 +133,24 @@ const Inputs = ({ name, number, month, year, Cvc }) => {
             type="tel"
             placeholder="123"
             name="CVC"
-            minLength="3"
-            maxLength="3"
-            //onChange={props.onChangeCvc}
-            // value={props.valueCvc}
-            pattern="[0-9]+$"
-            required
-            {...register("inputCVC")}
+            {...register("inputCvc",{
+              required: "Please check the data",
+              minLength:{
+                value: 3,
+                message: "Please check the data",
+              },
+              maxLength:{
+                value: 3,
+                message: "Please check the data",
+              },
+              pattern:{
+                value:/[0-9]+$/,
+                message: "Please check the data",
+              }
+            })}
           />
+          <span>{errors.inputCvc?.message}</span>
+          
         </div>
       </div>
       <Btn style_btn="form_btn" text="CONFIRM" />

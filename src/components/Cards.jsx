@@ -4,18 +4,6 @@ import circle_1 from "../images/card-logo.svg";
 
 const Cards = ({ data, dataNumber, dataMM, dataYY }) => {
 
-
-  // const nameRegExp = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
-  // const numberRegExp = /^[0-9]*$/;
-  // const MMRegExp = /^0[1-9]|1[0-2]*$/;
-
-  // const isvalidName = nameRegExp.test(dataName);
-  // const isValidNumber = numberRegExp.test(dataNumber);
-  // const isValidMM = MMRegExp.test(dataMM);
-  // const isValidYY = numberRegExp.test(dataYY);
-
-console.log(dataNumber)
-  // //const number = dataNumber.replace(/(\d{4})/g, "$1 ")
  
   return (
     <section className="front_card">

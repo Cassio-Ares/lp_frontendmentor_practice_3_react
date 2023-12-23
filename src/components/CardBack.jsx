@@ -1,8 +1,9 @@
 import "./cardBack.css";
 import cardBack from "../images/bg-card-back.png";
-import { useEffect, useState } from "react";
+
 
 const CardBack = ({ dataCvc }) => {
+  //console.log(dataCvc)
  
   
   return (
